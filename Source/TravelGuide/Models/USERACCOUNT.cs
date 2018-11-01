@@ -9,13 +9,18 @@ namespace TravelGuide
     [Table("USERACCOUNT")]
     public partial class USERACCOUNT
     {
+
+        [Key]
+        [StringLength(32)]
+        public string ID_USER { get; set; }
+
         [Required]
         [StringLength(200)]
         [MaxLength(50)]
         [Display(Name = "Full Name")]
         public string NAME_USER { get; set; }
 
-       
+
         [StringLength(200)]
         [Display(Name = "Address")]
         public string ADDRESS_USER { get; set; }
@@ -27,12 +32,13 @@ namespace TravelGuide
         public string TEL_USER { get; set; }
 
         [StringLength(50)]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Required]
         [RegularExpression(@"^\S*$", ErrorMessage = "No white space allowed")]
         [Display(Name = "Email Address")]
         public string EMAIL_USER { get; set; }
 
+        [Display(Name = "Disable")]
         public bool? DISASBLE { get; set; }
 
         [StringLength(50)]
@@ -42,8 +48,6 @@ namespace TravelGuide
         [Display(Name = "Password")]
         public string PASS_USER { get; set; }
 
-        [Key]
-        [StringLength(32)]
-        public string ID_USER { get; set; }
+
     }
 }
